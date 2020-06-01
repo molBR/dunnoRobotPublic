@@ -6,19 +6,25 @@ import (
   "dunnorobot/cmd/comunication/service"
   "encoding/json"
   "dunnorobot/cmd/comunication/dto"
+  "fmt"
 )
 
 
 
-func HelloWorld (w http.ResponseWriter, r *http.Request)  {
+func HelloWorld (w http.ResponseWriter, r *http.Request) {
   
-
+  fmt.Println("entrou")
   decoder := json.NewDecoder(r.Body)
-
+  encoder := json.NewEncoder(w)
   var mObj dtoInterface.MessageStruct
   err := decoder.Decode(&mObj)
   if err != nil {
     panic(err)
   }
-  serviceInterface.PrimaryService(mObj)
+  serviceResponse:=serviceInterface.PrimaryService(mObj)
+  var response dtoInterface.MessageResponseStruct
+  response.Response = serviceResponse
+  encoder.Encode(response)
+  return 
+  
 }
