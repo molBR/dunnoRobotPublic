@@ -1,11 +1,10 @@
-module github.com/molbr/dunnorobot
+module dunnorobot
 
-go 1.12
+go 1.14
 
 require (
-    "github.com/gorilla/mux"
-    "github.com/rs/cors"
-    "cloud.google.com/go/dialogflow/apiv2"
-    "google.golang.org/genproto/googleapis/cloud/dialogflow/v2"
-
+	cloud.google.com/go v0.58.0
+	github.com/gorilla/mux v1.7.4
+	github.com/rs/cors v1.7.0
+	google.golang.org/genproto v0.0.0-20200612171551-7676ae05be11
 )
