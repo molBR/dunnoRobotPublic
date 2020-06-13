@@ -11,5 +11,5 @@ import (
 func main() {
   fmt.Println("Hello world")
   router := routes.CreateRouter()
-  log.Fatal(http.ListenAndServe(":8000", router))
+  log.Fatal(http.ListenAndServe(":80", router))
 }
