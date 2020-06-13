@@ -6,7 +6,7 @@ import (
   "fmt"
 	dialogflow "cloud.google.com/go/dialogflow/apiv2"
 	dialogflowpb "google.golang.org/genproto/googleapis/cloud/dialogflow/v2"
-
+  "github.com/nu7hatch/gouuid"
 )
 
 
@@ -22,10 +22,12 @@ func PrimaryService(mObj dtoInterface.MessageStruct) string {
   var projectId string
   var sessionId string
   var language string
-  projectId = "newagent-xhhnxv"
-  sessionId = "123456789"
-  language = "pt-BR"
+  uuidGen, _ := uuid.NewV4()
+  projectId = "small-talk-svaxoa"
+  sessionId = uuidGen.String()
+  language = "pt-br"
   sessionPath := fmt.Sprintf("projects/%s/agent/sessions/%s", projectId, sessionId)
+  
   textInput := dialogflowpb.TextInput{
     Text: mObj.Message,
     LanguageCode: language,
@@ -40,9 +42,5 @@ func PrimaryService(mObj dtoInterface.MessageStruct) string {
   }  
   queryResult := response.GetQueryResult()
   fufillmentText := queryResult.GetFulfillmentText()
-  fmt.Println(response)
-  fmt.Println(queryResult)
-  fmt.Println(fufillmentText)
-  fmt.Println("fim.")
   return fufillmentText
 }
