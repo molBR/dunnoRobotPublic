@@ -10,8 +10,9 @@ import (
 
 
 func main() {
-  port := os.Getenv("PORT")
-  fmt.Println("Hello world")
+  port := ":" + os.Getenv("PORT")
+  fmt.Println(port)
+  
   router := routes.CreateRouter()
-  log.Fatal(http.ListenAndServe(":"+ port , router))
+  log.Fatal(http.ListenAndServe(port , router))
 }
