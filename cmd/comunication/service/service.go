@@ -23,7 +23,7 @@ func PrimaryService(mObj dtoInterface.MessageStruct) string {
   var sessionId string
   var language string
   uuidGen, _ := uuid.NewV4()
-  projectId = "small-talk-svaxoa"
+  projectId = ""
   sessionId = uuidGen.String()
   language = "pt-br"
   sessionPath := fmt.Sprintf("projects/%s/agent/sessions/%s", projectId, sessionId)
